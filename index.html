@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+                document.getElementById('activity-8').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - S1 - M08</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Saludar a los genios y preparar el ambiente para el aprendizaje.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy trabajaremos en la simetría y cómo nos ayuda a crear diseños más equilibrados."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo están?" con emoticonos de mano genio y pulgar hacia abajo.</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Si están listos para empezar, toquen su nariz con un dedo. Si aún necesitan un momento para concentrarse, pónganse una mano en la cabeza."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Juntemos nuestras manos en agradecimiento por esta oportunidad de aprender y crear juntos. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy vamos a lograr tres cosas: 1. Explorar cómo alinear y ajustar dimensiones en 3D. 2. Aprender a usar la simetría para diseñar modelos equilibrados. 3. Crear un modelo simétrico en TinkerCAD."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion_dia')">
+        <div class="title">💡 Actividad 2: Innovación del Día ⏰ Tiempo: 4 minutos</div>
+        <div class="subtitle">Presentación de una innovación que sirve como ejemplo de simetría.</div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Innovación del Día".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy les presentaré un ícono del diseño y la ingeniería: el Golden Gate Bridge. Esta obra maestra muestra cómo la simetría y la alineación crean estructuras resistentes y estéticas."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 7 "Detalles del Golden Gate".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Fíjense cómo cada parte del puente, desde los cables hasta los pilares, sigue patrones precisos de simetría. Esto asegura estabilidad y equilibrio en su diseño. La simetría no solo es estética, sino que también mejora la funcionalidad y seguridad."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión sobre Simetría".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Así como los ingenieros aplicaron simetría para diseñar este puente, nosotros usaremos simetría en nuestros modelos en TinkerCAD. La precisión en el diseño es fundamental, ya sea para un puente o para lo que crearemos hoy."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">🧠 Actividad 3: Brain Gym ⏰ Tiempo: 11.5 minutos</div>
+        <div class="subtitle">Enseñar a los genios a usar las herramientas de alineación, regla y simetría en TinkerCAD.</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (1 minuto):</strong> Proyectar Diapositiva 9 "Introducción al Brain Gym".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy vamos a trabajar en habilidades avanzadas de modelado 3D: medición, alineación y simetría. Estas herramientas son clave para crear diseños equilibrados y precisos, tanto para objetos simples como para proyectos complejos. ¡Vamos a empezar!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Transformación Básica".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a usar 4 esferas de colores para la demostración, primero seleccionamos la esfera azul. Los puntos blancos y negros que aparecen nos permiten escalarla. Los puntos blancos cambian la figura en dos ejes a la vez (X y Y), mientras que los negros lo hacen solo en uno. La flecha superior mueve el objeto verticalmente, y las curvas permiten rotarlo. TIP: Si mantienen presionada la tecla Shift mientras arrastran un punto blanco, escalarán el objeto de manera proporcional."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 11 "Ajuste Preciso".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Cuando necesitamos precisión, ingresamos valores específicos. Por ejemplo, hagan clic en un punto negro y verán un recuadro en milímetros. Cambiaremos el tamaño a 40 mm. Con las flechas curvas, podemos rotar la esfera 45 grados. Esto asegura que los diseños sean exactos, como cuando se construye una pieza que debe encajar perfectamente con otras."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 12 "Alineación de Objetos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a alinear la esfera roja con la verde. Al hacer clic en Alinear, verán puntos negros. Imaginen que les pido que se pongan en fila en el centro del salón. Así es como los objetos se alinean en el plano central. Esta alineación es fundamental para mantener orden y coherencia en nuestros modelos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (1 minuto):</strong> Proyectar Diapositiva 13 "Alineación en Ejes".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Probaremos ahora alinear las esferas horizontalmente y verticalmente. Al hacer esto, aseguran que todas estén alineadas al mismo nivel, como si estuvieran formando una fila a lo largo del piso. Esta técnica es útil para mantener la consistencia en modelos tridimensionales complejos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (1 minuto):</strong> Proyectar Diapositiva 14 "Uso de la Regla".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "La herramienta Regla nos permite medir la distancia entre objetos. Vamos a colocarla en el plano de trabajo y vamos a mover una esfera a exactamente 40 mm de otra. La precisión en la posición es clave en proyectos donde los objetos deben alinearse perfectamente, como en estructuras arquitectónicas."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (1 minuto):</strong> Proyectar Diapositiva 15 "Simetría".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "La simetría es esencial en muchos diseños, como en los aviones. Si un ala es más larga o tiene una forma distinta a la otra, el avión no podría volar correctamente. Por eso, la simetría perfecta es vital en proyectos de ingeniería y diseño. En TinkerCAD, podemos usar la herramienta de Simetría para reflejar objetos sin errores."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 8 (1 minuto):</strong> Proyectar Diapositiva 16 "Espejado de Objetos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a tomar como ejemplo la mitad del logo de Gnius Club, el cual dibujaremos con la forma de doodle. Ahora, al duplicar el objeto podemos la herramienta de Simetría para reflejarlo. La simetría permite crear una versión espejada sin necesidad de reconstruir el objeto, ahorrando tiempo y evitando errores."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 9 (1.5 minutos):</strong> Proyectar Diapositiva 17 "Simetría en el Mundo Real".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "La simetría está presente en muchos proyectos, desde puentes hasta automóviles. Por ejemplo, el Golden Gate Bridge mantiene equilibrio gracias a su diseño simétrico. Sin esta precisión, el puente no sería tan estable ni funcional. Ustedes usarán este mismo principio en sus diseños. A pesar de su estabilidad, el Golden Gate es también uno de los puentes favoritos de Hollywood, no sólo para su uso, sino que principalmente... ¡Para su destrucción! Se estima que ha sido destruido en más de 30 películas como Godzilla y X-Men. La popularidad del puente en películas de desastres se debe a su icónica estructura, su ubicación y lo impresionante que resulta verlo colapsar en pantalla."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 10 (1 minuto):</strong> Proyectar Diapositiva 18 "Mini-ejercicio".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Veremos un ejemplo más con la mitad de un corazón y luego reflejando la figura usando la herramienta de Simetría. Asegurandonos de que ambas mitades encajen perfectamente. Este ejercicio nos ayuda a entender cómo mantener precisión en sus diseños."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 11 (0.5 minutos):</strong> Proyectar Diapositiva 19 "Reflexión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy aprendimos a medir, alinear y espejar objetos en TinkerCAD. Estas habilidades son fundamentales para lograr modelos precisos y equilibrados. La práctica constante les permitirá crear diseños más complejos y profesionales en el futuro."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 12 (0.5 minutos):</strong> Proyectar Diapositiva 20 "Revisión de Objetivos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hasta ahora hemos cumplido dos objetivos de nuestra misión: 1. Ajustar dimensiones y aplicar alineación en modelos 3D. 2. Aprender a usar la simetría para crear diseños equilibrados. ¡Vamos bien encaminados!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🤣 Actividad 4: State Change ⏰ Tiempo: 1.5 minutos</div>
+        <div class="subtitle">Reír sin control para mejorar el ánimo y la concentración.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 21 "Ejercicio de Risa".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, vamos a reírnos de forma exagerada durante 15 segundos. No importa si la risa es real o forzada; lo importante es participar. La risa tiene muchos beneficios, como reducir el estrés y mejorar el ánimo. ¡Así que ríe como si hubieras escuchado el chiste más gracioso del mundo!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 22 "Cronómetro - 15 segundos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 23 "Reflexión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Muy bien, Genios. ¿Sabían que la risa reduce los niveles de cortisol, la hormona del estrés? Así que, además de relajarnos, estamos preparando nuestras mentes para concentrarnos mejor en las siguientes actividades."</td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 5: Team Gnius ⏰ Tiempo: 7 minutos</div>
+        <div class="subtitle">Formar equipos y asignar tareas prioritarias para trabajar en equipo en la misión.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 24 "Formación de Parejas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, para esta actividad formarán parejas, pero con compañeros diferentes a los que trabajaron en la misión anterior. ¡Es una oportunidad para aprender algo nuevo de alguien más! Tienen un minuto para organizarse."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 25 "Cronómetro - 1 minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 26 "Recoger Magic Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que ya tienen sus parejas, cada equipo enviará un representante por su Magic Tablet. Tienen un minuto para hacerlo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 27 "Cronómetro - 1 minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (1 minuto):</strong> Proyectar Diapositiva 28 "Priorización con Kanban".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy quiero que nos enfoquemos en la priorización dentro de Kanban. Ya saben usar esta metodología, pero ahora veamos qué pasa cuando no priorizamos bien. Por ejemplo, imaginen que tienen que entregar un proyecto en tres días. Sin embargo, pierden tiempo en tareas menores, como elegir colores o cambiar tipografías, dejando tareas críticas como las revisiones finales para último momento. Esto genera retrasos y aumenta el riesgo de cometer errores."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (1.5 minutos):</strong> Proyectar Diapositiva 29 "Ejemplos de Priorización".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "La clave es identificar las tareas que tienen mayor impacto en el resultado. En un proyecto de modelado 3D, priorizarían tareas como definir medidas exactas o crear una estructura base antes de elegir decoraciones. Otra analogía es la construcción de un edificio: no puedes empezar a pintar las paredes antes de tener los cimientos. La priorización es como ordenar las piezas del rompecabezas: primero haces el borde, porque eso facilita todo lo demás."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (1.5 minutos):</strong> Proyectar Diapositiva 30 "Preparación para el Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En el Challenge de hoy, su éxito dependerá de cómo prioricen. Las tareas más críticas deben ir siempre al frente, porque resolverlas garantiza que todo lo demás fluya sin problemas. Hoy trabajaremos los Challenges de una nueva manera, y su habilidad para priorizar será crucial. ¡Vamos a por ello!"</td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 6 -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 6: Challenge ⏰ Tiempo: 4.5 minutos</div>
+        <div class="subtitle">Diseñar una mariposa con alas simétricas en TinkerCAD.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 31 "Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es hora de poner en práctica todo lo que hemos aprendido hoy. ¡Vamos a crear algo espectacular! Este Challenge pondrá a prueba su creatividad, precisión y habilidades en TinkerCAD."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 32 "Niveles de Dificultad".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "A partir de hoy, cada reto tendrá tres niveles de dificultad: Rookie, Master y Hacker. Todos trabajamos a diferentes ritmos y tenemos habilidades distintas, por eso pueden elegir el nivel que más se ajuste a sus capacidades."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 33 "Detalles del Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Veamos los tres niveles: Rookie: Creen una mariposa simétrica usando figuras básicas en TinkerCAD. Cada parte debe ser un espejo exacto de la otra. Master: Además, agreguen al menos 20 detalles en cada ala. Hacker: Por último, coloquen las alas inclinadas 30° con respecto a la base, y la mariposa inclinada 35° con respecto al suelo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 34 "Organización de Tareas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "La clave aquí es priorizar sus tareas. Si eligen un nivel más difícil pero no logran cumplir con los niveles inferiores, habrán fallado el reto. Por eso, es importante que organicen bien su tiempo y esfuerzos. ¿Están listos para poner a prueba sus habilidades?"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (10 minutos):</strong> Proyectar Diapositiva 35 "Cronómetro - 10 minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (0.5 minutos):</strong> Proyectar Diapositiva 36 "Presentación de Resultados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Quiero escuchar lo que lograron. Tres parejas voluntarias tendrán 1 minuto cada una para mostrarnos sus mariposas y contarnos hasta qué nivel llegaron. ¿Quién quiere empezar?"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (3 minutos):</strong> Proyectar Diapositiva 37 "Cronómetro - 3 minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 8 (1 minuto):</strong> Proyectar Diapositiva 38 "Objetivos Alcanzados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos completado todos los objetivos de nuestra misión: 1. Ajustar dimensiones y aplicar alineación en modelos 3D. 2. Usar la simetría para diseños equilibrados. 3. Crear una mariposa simétrica con niveles de complejidad adicionales. ¡Excelente trabajo!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 9 (0.5 minutos):</strong> Proyectar Diapositiva 39 "You've Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Gran trabajo, Genios! Han demostrado sus habilidades y creatividad en este reto. Todos se merecen Mon-e por su esfuerzo y dedicación. ¡Nos vemos en la próxima misión!"</td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 7 -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">🥚 Actividad 7: Easter Egg ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Evaluar la atención con una pregunta sorpresa.</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 40 "Easter Egg - Pregunta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es hora del Easter Egg. La próxima diapositiva tiene una pregunta sobre algo que discutimos hoy. Los tres primeros que levanten la mano y respondan correctamente ganarán Mon-e. No respondan en voz alta, solo levanten la mano. Yo elegiré quién responde. ¿Listos?"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 41 "Pregunta del Easter Egg".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¿Cuántas veces se estima que ha sido destruido el Golden Gate Bridge en las películas de acción?"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 42 "Respuesta Correcta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Uno, ven y dime la respuesta al oído... Ahora tú, dos... Y por último, el tres. La respuesta correcta es: Más de 30 películas. ¡Felicidades, ganaron Mon-e!"</td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 8 -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🎖️ Actividad 8: Honor de Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Despedida y recogida de materiales.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (2 minuto):</strong> Proyectar Diapositiva 43 "Honor the Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hemos terminado por hoy. Ahora, cada equipo pasará al frente para devolver su Magic Tablet. Asegúrense de dejar su área ordenada. Recordemos que cuidar nuestro espacio es parte de ser un buen equipo."</td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
